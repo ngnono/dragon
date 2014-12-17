@@ -70,10 +70,8 @@ exports.isAuthenticated = function () {
         if (!req.isAuthenticated()) {
 
             if (req.session) {
-                req.session.returnTo = req.url;
+                req.session.returnTo = req.originalUrl;
             }
-
-            console.log("returnUrl:" + req.session.returnTo);
             next(new AuthenticationError({
                 message: 'Not Authentication'
             }));

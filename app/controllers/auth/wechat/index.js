@@ -10,7 +10,7 @@ module.exports = function (router) {
         failureRedirect: '/auth/fail'
     }), function (req, res, next) {
         console.log(req.session);
-        console.log(req.session.redirectTo);
-        res.redirect(req.session.redirectTo || '/home');
+        console.log(req.session.returnTo);
+        res.redirect(req.session.returnTo || '/home');
     });
 };

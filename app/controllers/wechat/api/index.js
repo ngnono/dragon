@@ -1,5 +1,6 @@
 "use strict";
 
+var wechat=require('wechat')('yali');
 
 module.exports = function (router) {
 

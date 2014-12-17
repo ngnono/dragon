@@ -9,10 +9,12 @@
     "express-session": "^1.9.3",
     "js-yaml": "^3.2.3",
     "li-wechat": "^1.1.0",
+    "lodash": "^2.4.1",
     "method-override": "^2.3.0",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "passport-wechat": "^0.1.2",
+    "pine": "^1.1.0",
     "serve-favicon": "^2.1.7",
     "useragent": "^2.1.3"
   },

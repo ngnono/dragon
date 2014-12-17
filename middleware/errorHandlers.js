@@ -19,7 +19,7 @@ exports.serverError = function (template, config) {
         var statusCode = res.statusCode || 500;
 
         console.log(error);
-        var model = { url: req.url, err: err, statusCode: statusCode };
+        var model = { url: req.url, err: error, statusCode: statusCode };
         if (req.xhr) {
             res.send(statusCode, model);
         } else if (error.name === 'AuthenticationError') {

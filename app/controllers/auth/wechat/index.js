@@ -8,10 +8,5 @@ module.exports = function (router) {
 
     router.get('/callback', passport.authenticate('wechat', {
         failureRedirect: '/auth/fail'
-    }), function (req, res, next) {
-
-        var url = req.session.returnTo || '';
-
-        res.json({url: url});
-    });
+    }));
 };

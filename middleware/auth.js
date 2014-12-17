@@ -69,7 +69,7 @@ exports.isAuthenticated = function () {
     return function (req, res, next) {
         if (!req.isAuthenticated()) {
 
-            if (res.session) {
+            if (req.session) {
                 req.session.returnTo = req.url;
             }
             throw new AuthenticationError({

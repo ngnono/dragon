@@ -28,16 +28,17 @@ exports.serverError = function (template, config) {
              * redirect other website login by UserAgent
              */
             var userAgent = req.headers['user-agent'] || '';
+            var redirectURL = auth.redirect;
             Object.keys(auth.auto || {}).forEach(function (device) {
                 if (userAgent.indexOf(device) > 0) {
-                    return res.redirect(auth.auto[device].redirect);
+                    redirectURL = auth.auto[device].redirect;
                 }
             });
 
             /**
              * redirect default login
              */
-            res.location(auth.redirect || '/login');
+            res.redirect(redirectURL || '/login');
         }
         else {
             res.render(template, model);

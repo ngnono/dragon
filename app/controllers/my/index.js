@@ -10,7 +10,7 @@ module.exports = function (router) {
 
     router.get('/', function (req, res) {
 
-        var user = req.user;
+        var user = JSON.stringify(req.user);
         console.log(user);
         res.render('my/index', {user: user || {}});
     });

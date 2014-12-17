@@ -1,7 +1,6 @@
 "use strict";
 
 var _ = require('lodash');
-var errors =require('./errorHandlers');
 
 exports.fileNotFound = function (template) {
     return function (req, res, next) {
@@ -23,7 +22,8 @@ exports.fileNotFound = function (template) {
 exports.notAuthenticated = function (config) {
     var auth = config.get('auth');
     return function (error, req, res, next) {
-        if (error instanceof errors.AuthenticationError) {
+
+        if (error.name === 'AuthenticationError') {
 
             /**
              * redirect other website login by UserAgent
@@ -39,7 +39,7 @@ exports.notAuthenticated = function (config) {
              * redirect default login
              */
             res.redirect(auth.redirect || '/login');
-        }else{
+        } else {
             /**
              * return error to next middleware to process
              */

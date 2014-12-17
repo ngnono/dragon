@@ -11,6 +11,6 @@ module.exports = function (router) {
     router.get('/', function (req, res) {
 
         var user = req.user;
-        res.render('home/index', user);
+        res.render('my/index', user);
     });
 };

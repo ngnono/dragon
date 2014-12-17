@@ -15,10 +15,10 @@ exports.fileNotFound = function (template) {
 };
 
 exports.serverError = function (template, config) {
-    return function (err, req, res, next) {
+    return function (error, req, res, next) {
         var statusCode = res.statusCode || 500;
 
-        console.log(err);
+        console.log(error);
         var model = { url: req.url, err: err, statusCode: statusCode };
         if (req.xhr) {
             res.send(statusCode, model);

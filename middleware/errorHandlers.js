@@ -53,6 +53,7 @@ exports.serverError = function (template) {
     return function (err, req, res, next) {
         var statusCode = res.statusCode || 500;
 
+        console.log(err);
         var model = { url: req.url, err: err, statusCode: statusCode };
         if (req.xhr) {
             res.send(statusCode, model);

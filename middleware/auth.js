@@ -76,7 +76,6 @@ exports.isAuthenticated = function () {
                 message: 'Not Authentication'
             });
         }
-        next();
     }
 };
 

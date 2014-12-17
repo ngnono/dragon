@@ -3,8 +3,8 @@
 var passport = require('passport');
 
 module.exports = function (router) {
-    router.post('/', passport.authenticate('local', { failureRedirect: '/login' }), function (req, res) {
-        var url = req.session.returnTo || '/home';
-        res.redirect(url);
-    });
+    router.post('/', passport.authenticate('local', { failureRedirect: '/login' }),
+        function (req, res) {
+            res.redirect(req.session.returnTo || '/home');
+        });
 };

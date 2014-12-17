@@ -39,13 +39,12 @@ exports.notAuthenticated = function (config) {
              * redirect default login
              */
             res.redirect(auth.redirect || '/login');
-            return;
+        }else{
+            /**
+             * return error to next middleware to process
+             */
+            next(error);
         }
-
-        /**
-         * return error to next middleware to process
-         */
-        next(error);
     };
 };
 
@@ -60,7 +59,5 @@ exports.serverError = function (template) {
         } else {
             res.render(template, model);
         }
-
-        next(err);
     };
 };

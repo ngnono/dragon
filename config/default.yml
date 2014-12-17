@@ -1,0 +1,26 @@
+#wechat config
+wechat:
+  appid: wx1903fcbc53deafe0
+  state: true
+  scope: snsapi_userinfo
+  appsecret: c7aa389c8a0f9adb8ba50b89c3f77636
+  callbackURL: http://liangyali.duapp.com/auth/wechat/callback
+
+# session config
+session:
+  key: ''
+  secret: 'test'
+  cookie:
+    path: '/'
+    httpOnly: true
+    maxAge: null
+  resave: true
+  saveUninitialized: true
+  proxy: null
+
+#auth
+auth:
+  auto: #自动登陆
+    MicroMessager: #微信
+      redirect: '/auth/wechat'
+  redirect: '/login' #默认登陆页面

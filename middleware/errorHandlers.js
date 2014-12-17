@@ -31,7 +31,7 @@ exports.notAuthenticated = function (config) {
             var userAgent = req.headers['user-agent'] || '';
             Object.keys(auth.auto || {}).forEach(function (device) {
                 if (userAgent.indexOf(device) > 0) {
-                    return res.redirect(302, auth[device].redirect);
+                    return res.redirect(302, auth.auto[device].redirect);
                 }
             });
 

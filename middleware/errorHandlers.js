@@ -18,17 +18,17 @@ exports.serverError = function (template, config) {
     return function (error, req, res, next) {
         var statusCode = res.statusCode || 500;
 
-        console.log(error);
         var model = { url: req.url, err: error, statusCode: statusCode };
         if (req.xhr) {
             res.send(statusCode, model);
         } else if (error.name === 'AuthenticationError') {
-            var auth = config.get('auth');
             /**
-             * redirect other website login by UserAgent
+             * AuthenticationError redirect to login url
              */
+            var auth = config.get('auth');
             var userAgent = req.headers['user-agent'] || '';
             var redirectURL = auth.redirect;
+
             Object.keys(auth.auto || {}).forEach(function (device) {
                 if (userAgent.indexOf(device) > 0) {
                     redirectURL = auth.auto[device].redirect;

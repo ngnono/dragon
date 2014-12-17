@@ -11,6 +11,7 @@ module.exports = function (router) {
     router.get('/', function (req, res) {
 
         var user = req.user;
-        res.render('my/index', user);
+        console.log(user);
+        res.render('my/index', {user: user || {}});
     });
 };

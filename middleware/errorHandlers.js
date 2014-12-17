@@ -16,11 +16,10 @@ exports.fileNotFound = function (template) {
 
 exports.serverError = function (template, config) {
     return function (error, req, res, next) {
-        var statusCode = res.statusCode || 500;
 
         var model = { url: req.url, err: error, statusCode: statusCode };
         if (req.xhr) {
-            res.send(statusCode, model);
+            res.json(model);
         } else if (error.name === 'AuthenticationError') {
             /**
              * AuthenticationError redirect to login url

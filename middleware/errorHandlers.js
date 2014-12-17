@@ -31,7 +31,7 @@ exports.notAuthenticated = function (config) {
              */
             var agent = useragent.parse(req.headers['user-agent'], '');
             Object.keys(auth.auto || {}).forEach(function (device) {
-                console.log(agent.device);
+                console.log(JSON.stringify(agent));
                 if (agent.device.family === device) {
                     return res.redirect(302, auth[device].redirect);
                 }

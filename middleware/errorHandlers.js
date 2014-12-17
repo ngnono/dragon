@@ -37,7 +37,6 @@ exports.serverError = function (template, config) {
             /**
              * redirect default login
              */
-            console.log(redirectURL);
             res.redirect(redirectURL || '/login');
         }
         else {

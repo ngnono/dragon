@@ -72,9 +72,11 @@ exports.isAuthenticated = function () {
             if (req.session) {
                 req.session.returnTo = req.url;
             }
-            throw new AuthenticationError({
+            next(new AuthenticationError({
                 message: 'Not Authentication'
-            });
+            }));
+        } else {
+            next();
         }
     }
 };
@@ -90,9 +92,9 @@ exports.AuthorizedInRoles = function (roles) {
             if (_.intersection(req.user.roles, roles).length) {
                 return next();
             } else {
-                throw new AuthorizedError({
+                next(AuthorizedError({
                     message: 'Not AuthorizedInRoles'
-                });
+                }));
             }
         });
     };

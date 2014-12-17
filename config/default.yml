@@ -21,6 +21,6 @@ session:
 #auth
 auth:
   auto: #自动登陆
-    MicroMessager: #微信
+    MicroMessenger: #微信
       redirect: '/auth/wechat'
   redirect: '/login' #默认登陆页面

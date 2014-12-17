@@ -17,7 +17,7 @@ exports.fileNotFound = function (template) {
 exports.serverError = function (template, config) {
     return function (error, req, res, next) {
 
-        var model = { url: req.url, err: error, statusCode: statusCode };
+        var model = { url: req.url, err: error, statusCode: 500 };
         if (req.xhr) {
             res.json(model);
         } else if (error.name === 'AuthenticationError') {

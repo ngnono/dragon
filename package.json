@@ -7,6 +7,7 @@
     "express": "^4.10.6",
     "express-enrouten": "^1.2.0",
     "express-session": "^1.9.3",
+    "js-yaml": "^3.2.3",
     "li-wechat": "^1.1.0",
     "method-override": "^2.3.0",
     "passport": "^0.2.1",

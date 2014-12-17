@@ -23,6 +23,7 @@ exports.serverError = function (template, config) {
         if (req.xhr) {
             res.send(statusCode, model);
         } else if (error.name === 'AuthenticationError') {
+            var auth = config.get('auth');
             /**
              * redirect other website login by UserAgent
              */

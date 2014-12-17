@@ -72,13 +72,11 @@ exports.isAuthenticated = function () {
             if (res.session) {
                 req.session.returnTo = req.url;
             }
-            res.status(401);
             throw new AuthenticationError({
                 message: 'Not Authentication'
             });
-        } else {
-            next();
         }
+        next();
     }
 };
 
@@ -93,7 +91,6 @@ exports.AuthorizedInRoles = function (roles) {
             if (_.intersection(req.user.roles, roles).length) {
                 return next();
             } else {
-                res.status(403);
                 throw new AuthorizedError({
                     message: 'Not AuthorizedInRoles'
                 });

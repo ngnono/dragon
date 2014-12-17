@@ -1,6 +1,7 @@
 "use strict";
 
 var _ = require('lodash');
+var errors =require('errorHandlers');
 
 exports.fileNotFound = function (template) {
     return function (req, res, next) {
@@ -22,8 +23,7 @@ exports.fileNotFound = function (template) {
 exports.notAuthenticated = function (config) {
     var auth = config.get('auth');
     return function (error, req, res, next) {
-        var statusCode = res.statusCode || 500;
-        if (statusCode === 401) {
+        if (error instanceof errors.AuthenticationError) {
 
             /**
              * redirect other website login by UserAgent

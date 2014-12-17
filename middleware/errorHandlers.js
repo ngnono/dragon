@@ -1,6 +1,5 @@
 "use strict";
 
-var useragent = require('useragent');
 var _ = require('lodash');
 
 exports.fileNotFound = function (template) {
@@ -29,10 +28,9 @@ exports.notAuthenticated = function (config) {
             /**
              * redirect other website login by UserAgent
              */
-            var agent = useragent.parse(req.headers['user-agent'], '');
+            var userAgent = req.headers['user-agent'] || '';
             Object.keys(auth.auto || {}).forEach(function (device) {
-                console.log(JSON.stringify(agent));
-                if (agent.device.family === device) {
+                if (userAgent.indexOf(device) > 0) {
                     return res.redirect(302, auth[device].redirect);
                 }
             });

@@ -11,7 +11,7 @@ module.exports = function (router) {
     router.get('/', function (req, res) {
 
         var user = JSON.stringify(req.user);
-        console.log(user);
-        res.render('my/index', {user: user || {}});
+        var query = req.query;
+        res.render('my/index', {user: user || {}, params: query});
     });
 };

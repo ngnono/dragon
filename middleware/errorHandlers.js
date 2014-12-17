@@ -1,7 +1,7 @@
 "use strict";
 
 var _ = require('lodash');
-var errors =require('errorHandlers');
+var errors =require('./errorHandlers');
 
 exports.fileNotFound = function (template) {
     return function (req, res, next) {

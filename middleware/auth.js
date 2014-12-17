@@ -76,8 +76,9 @@ exports.isAuthenticated = function () {
             throw new AuthenticationError({
                 message: 'Not Authentication'
             });
+        } else {
+            next();
         }
-        next();
     }
 };
 
